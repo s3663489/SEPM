@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-<form>
+<form action = "create_user.php" method = "post">
     <div class="form-group">
         <h1>Create New Employee</h1>
         <label for="fname">First Name</label>
@@ -52,5 +52,7 @@
 </html>
 
 <?php
+session_start();
 
+require_once "db_config.php";
 php?>
