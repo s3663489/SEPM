@@ -33,7 +33,10 @@ if($link === false){
     <head>
         <meta charset="UTF-8">
         <title>Welcome</title>
-        <link rel="stylesheet" href="Login.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </head>
     
     <body>
@@ -41,9 +44,21 @@ if($link === false){
         <h1> Hi, <b><?php echo
         htmlspecialchars($_SESSION["login_user"]); ?></b> Welcome to your profile</h1>
         </div>
-        <p> <a href="account_details.php">Account details</a>
-        <p> Availability goes here</p>
-        <a href="logout.php" class="logoutbtn">logout</a>
+        
+        <nav class="navbar navbar-default">
+            <div class="container fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Company</a>
+                </div>
+            <ul class ="nav navbar-nav">
+                <li class="active"><a href="welcome.php">Home</a></li>
+                <li><a href="account_details.php">Account Details</a></li>
+                <li><a href="#">Availability</a></li>
+                <li><a href="#">Rostered Shifts</a></li>
+            </ul>
+            </div>
+        </nav>
+        <a href="logout.php" button type="button" class="btn btn-danger">logout</a>
     </p>
     </body>
 </html>
