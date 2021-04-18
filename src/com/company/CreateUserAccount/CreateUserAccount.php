@@ -1,6 +1,37 @@
 <?php
+//initialize the session
 session_start();
-php?>
+
+//Include config file
+require_once "db_config.php";
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = 2;
+    $firstname = $_POST["fname"];
+    $lastname = $_POST["lname"];
+    $hours = $_POST["hours"];
+    $prefname = $_POST["pname"];
+    $pnumber = $_POST["pnumber"];
+    $address = $_POST["address"];
+    $city = $_POST["city"];
+    $postcode = $_POST["postcode"];
+    $state = $_POST["state"];
+    $email = $_POST["email"];
+
+// search submission ID
+    $query = "SELECT * FROM `users` WHERE `ID` = '$id'";
+
+    $sql = "INSERT INTO users (fname, lname, hours, prefname, phonenumber, address, city, postcode, state, email, ID) 
+VALUES ('$firstname', '$lastname', $hours, '$prefname', $pnumber, '$address', '$city', $postcode, '$state', '$email', $id)";
+    
+
+  if (mysqli_query($link, $sql)) {
+       echo "New User Created";
+ } else {
+     echo "Error: " . $sql . "<br>" . mysqli_error($link);
+  }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +76,7 @@ php?>
     </nav>
 </head>
 <body>
-<form action = "create_user.php" method = "POST">
+<form action = "CreateUserAccount.php" method = "POST">
     <div class="form-group">
         <h1>Create New Employee</h1>
         <label for="fname">First Name</label>
