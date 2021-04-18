@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "db_config.php";
+include('session.php');
 //check if logged in, if not, redirect to login page
 if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
     //==========================THIS IS TRIGGERING UPON LOGGING IN!=====================================
@@ -37,7 +38,7 @@ if($link === false){
     
     <body>
         <h1> Hi, <b><?php echo
-        htmlspecialchars($_SESSION["username"]); ?></b> Welcome to your profile</h1>
+        htmlspecialchars($_SESSION["login_user"]); ?></b> Welcome to your profile</h1>
         <p> <a href="account_details.php">Account details</a>
         <p> Availability goes here</p>
         <a href="logout.php" class="logoutbtn">logout</a>
