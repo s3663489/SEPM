@@ -37,8 +37,10 @@ if($link === false){
     </head>
     
     <body>
+        <div class="jumbotron text-center">
         <h1> Hi, <b><?php echo
         htmlspecialchars($_SESSION["login_user"]); ?></b> Welcome to your profile</h1>
+        </div>
         <p> <a href="account_details.php">Account details</a>
         <p> Availability goes here</p>
         <a href="logout.php" class="logoutbtn">logout</a>
