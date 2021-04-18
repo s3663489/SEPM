@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $mypassword = mysqli_real_escape_string($db,$_POST['psw']);  
     
       //TODO: need to update id and admin values with values in SQL database==================================
-      $sql = "SELECT id FROM admin WHERE username = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
