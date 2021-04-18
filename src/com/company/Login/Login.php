@@ -15,12 +15,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       //$myusername = mysqli_real_escape_string($db,$_POST['username']);
       //$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-    $myusername = mysqli_real_escape_string($db,$_POST['uname']);
-    $mypassword = mysqli_real_escape_string($db,$_POST['psw']);  
+    $myusername = mysqli_real_escape_string($link,$_POST['uname']);
+    $mypassword = mysqli_real_escape_string($link,$_POST['psw']);  
     
       //TODO: need to update id and admin values with values in SQL database==================================
       $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($db,$sql);
+      $result = mysqli_query($link,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
