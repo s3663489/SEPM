@@ -13,9 +13,11 @@ require_once "db_config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
+      //$myusername = mysqli_real_escape_string($db,$_POST['username']);
+      //$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+    $myusername = mysqli_real_escape_string($db,$_POST['uname']);
+    $mypassword = mysqli_real_escape_string($db,$_POST['psw']);  
+    
       //TODO: need to update id and admin values with values in SQL database==================================
       $sql = "SELECT id FROM admin WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
