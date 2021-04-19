@@ -1,63 +1,40 @@
-<?php require_once "db_config.php";
-
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-
-    header("location: login.php");
-    exit;
-}
-
-$server_name = 'sql6.freesqldatabase.com:3306';
-
-$user_name = 'sql6405522';
-
-$db_password = 'qJCg3ik2gp';
-
-$db_name = 'sql6405522';
-
-$link = mysqli_connect($server_name, $user_name, $db_password, $db_name);
-
-if($link === false){
-
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>View Users</title>
 		<h1>View all user accounts</h1>
 		<p>Click the button below to show the details of all user accounts.</p>
         <link rel="stylesheet" href="ViewUsers.css">
 </head>
 <body>
-<button type="button" class="seeAllUsersbtn" onclick="showAllUserAccounts()">Show users</button>
+<button type="button" class="btn btn-info" onclick="showAllUserAccounts()">Show users</button>
 
 <script>
 function showAllUserAccounts() {
-<?php
- $db = mysqli_connect("localhost", "root","", "Login") or die(mysqli_error($db));
-	$q = "select distinct username from Login";
-	$results = mysqli_query($db, $q) or die(mysqli_error($db));
-	/*Below is supposed to print a list of rows under the "id", "username", "password", and "created_at" in the users table. Still WIP.*/
-	
-    while($row=mysqli_fetch_array($results))
-    {
-	print "<h2>Users:</h2>";
-	print "<h3>Id: {$row['id']}, Username: {$row['username']}, Password: {$row['password']}, Created at: {$row['created_at']}, /h3>\n";
-    }
+	<?php
+session_start();
+
+require_once "db_config.php";
+
+    $query = "SELECT * FROM users";
+	$results = mysqli_query($link, $query) or die(mysqli_error($link));
 	
 	if(mysqli_num_rows($results) === 0){
-    die("ERROR: No users exist." . mysqli_connect_error());
-}
-
-if($results === false){
-    die("ERROR: Could not connect to database. " . mysqli_connect_error());
-}
- ?>
+    print "ERROR: No users exist.";
+	} else {
+		while($row=mysqli_fetch_array($results))
+		{
+			print "<h2>Users:</h2>";
+			print "<h3>First Name: {$row['fname']}, Last Name: {$row['lname']}, Working Hours Limit: {$row['hours']}, Preferred Name: {$row['prefname']}, Phone Number: {$row['phonenumber']}, Address: {$row['address']},
+			City: {$row['city']}, Postcode: {$row['postcode']}, State: {$row['state']}, Email: {$row['email']}, ID: {$row['ID']}, /h3>\n";
+			}
+			}
+?>
 }
 </script>
 </body>
