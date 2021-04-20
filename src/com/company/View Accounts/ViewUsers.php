@@ -12,15 +12,17 @@
         <link rel="stylesheet" href="ViewUsers.css">
 </head>
 <body>
-<button type="button" class="btn btn-info" onclick="showAllUserAccounts()">Show users</button>
+<form class="well form-horizontal" action = "ViewUsers.php" method = "POST">
+<button type="submit" class="btn btn-info">Show users</button>
+</form>
+</body>
+</html>
 
-<script>
-function showAllUserAccounts() {
-	<?php
-session_start();
-
+<h1>Users:</h1>
+<?php
 require_once "db_config.php";
 
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "SELECT * FROM users";
 	$results = mysqli_query($link, $query) or die(mysqli_error($link));
 	
@@ -29,13 +31,9 @@ require_once "db_config.php";
 	} else {
 		while($row=mysqli_fetch_array($results))
 		{
-			print "<h2>Users:</h2>";
 			print "<h3>First Name: {$row['fname']}, Last Name: {$row['lname']}, Working Hours Limit: {$row['hours']}, Preferred Name: {$row['prefname']}, Phone Number: {$row['phonenumber']}, Address: {$row['address']},
-			City: {$row['city']}, Postcode: {$row['postcode']}, State: {$row['state']}, Email: {$row['email']}, ID: {$row['ID']}, /h3>\n";
+			City: {$row['city']}, Postcode: {$row['postcode']}, State: {$row['state']}, Email: {$row['email']}, ID: {$row['ID']}, </h3>\n";
 			}
 			}
-?>
 }
-</script>
-</body>
-</html>
+?>
