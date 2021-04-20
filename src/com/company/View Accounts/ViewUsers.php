@@ -18,7 +18,6 @@
 </body>
 </html>
 
-<h1>Users:</h1>
 <?php
 require_once "db_config.php";
 
@@ -29,6 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	if(mysqli_num_rows($results) === 0){
     print "ERROR: No users exist.";
 	} else {
+		print "<h1>Users:</h1>";
 		while($row=mysqli_fetch_array($results))
 		{
 			print "<h3>Username: {$row['username']}, Password: {$row['password']}, First Name: {$row['fname']}, Last Name: {$row['lname']}, Working Hours Limit: {$row['hours']}, Preferred Name: {$row['prefname']}, Phone Number: {$row['phonenumber']}, Address: {$row['address']},
