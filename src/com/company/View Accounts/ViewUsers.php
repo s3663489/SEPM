@@ -31,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	} else {
 		while($row=mysqli_fetch_array($results))
 		{
-			print "<h3>First Name: {$row['fname']}, Last Name: {$row['lname']}, Working Hours Limit: {$row['hours']}, Preferred Name: {$row['prefname']}, Phone Number: {$row['phonenumber']}, Address: {$row['address']},
+			print "<h3>Username: {$row['username']}, Password: {$row['password']}, First Name: {$row['fname']}, Last Name: {$row['lname']}, Working Hours Limit: {$row['hours']}, Preferred Name: {$row['prefname']}, Phone Number: {$row['phonenumber']}, Address: {$row['address']},
 			City: {$row['city']}, Postcode: {$row['postcode']}, State: {$row['state']}, Email: {$row['email']}, ID: {$row['ID']} </h3>\n";
 			}
 			}
