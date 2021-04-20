@@ -1,89 +1,120 @@
-$(document).ready(function() {
-    $('#contact_form').bootstrapValidator({
-        // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-        feedbackIcons: {
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            fname: {
-                validators: {
-                    stringLength: {
-                        min: 2,
-                    },
-                    notEmpty: {
-                        message: 'Please enter your First Name'
-                    }
-                }
-            },
-            lname: {
-                validators: {
-                    stringLength: {
-                        min: 2,
-                    },
-                    notEmpty: {
-                        message: 'Please enter your Last Name'
-                    }
-                }
-            },
+const form = document.getElementById('form');
+const fname = document.getElementById('fname');
+const lname = document.getElementById('lname');
+const hours = document.getElementById('hours');
+const pname = document.getElementById('pname');
+const pnumber = document.getElementById('pnumber');
+const address = document.getElementById('address');
+const city = document.getElementById('city');
+const postcode = document.getElementById('postcode');
+const state = document.getElementById('state');
+const email = document.getElementById('email');
 
-            hours: {
-                validators: {
-                    stringLength: {
-                        min: 2,
-                    },
-                    notEmpty: {
-                        message: 'Please enter your Password'
-                    }
-                }
-            },
-            pname: {
-                validators: {
-                    stringLength: {
-                        min: 3,
-                    },
-                }
-            },
-            email: {
-                validators: {
-                    notEmpty: {
-                        message: 'Please enter your Email Address'
-                    },
-                    emailAddress: {
-                        message: 'Please enter a valid Email Address'
-                    }
-                }
-            },
-            pnumber: {
-                validators: {
-                    stringLength: {
-                        min: 12,
-                        max: 12,
-                        notEmpty: {
-                            message: 'Please enter your Contact No.'
-                        }
-                    }
-                },
-            }
-        }
-    })
-        .on('success.form.bv', function(e) {
-            $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-            $('#contact_form').data('bootstrapValidator').resetForm();
+form.addEventListener('submit', (e) =>{
+    e.preventDefault();
 
-            // Prevent form submission
-            e.preventDefault();
-
-            // Get the form instance
-            var $form = $(e.target);
-
-            // Get the BootstrapValidator instance
-            var bv = $form.data('bootstrapValidator');
-
-            // Use Ajax to submit form data
-            $.post($form.attr('action'), $form.serialize(), function(result) {
-                console.log(result);
-            }, 'json');
-        });
+    checkInputs();
 });
+
+function checkInputs() {
+    //get the values from te inputs
+    const fnameValue = fname.value.trim();
+    const lnameValue = lname.value.trim();
+    const hoursValue =  hours.value.trim();
+    const pnameValue = pname.value.trim();
+    const pnumberValue = pnumber.value.trim();
+    const addressValue = address.value.trim();
+    const cityValue = city.value.trim();
+    const postcodeValue = postcode.value.trim();
+    const stateValue = state.value.trim();
+    const emailValue = email.value.trim();
+
+    if(fnameValue === '') {
+        setErrorFor(fname, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(fname);
+    }
+    if(lnameValue === '') {
+        setErrorFor(lname, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(lname);
+    }
+    if(hoursValue === '') {
+        setErrorFor(hours, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(hours);
+    }
+    if(pnameValue === '') {
+        setErrorFor(pname, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(pname);
+    }
+    if(pnumberValue === '') {
+        setErrorFor(pnumber, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(pnumber);
+    }
+    if(addressValue === '') {
+        setErrorFor(address, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(address);
+    }
+    if(cityValue === '') {
+        setErrorFor(city, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(city);
+    }
+    if(postcodeValue === '') {
+        setErrorFor(postcode, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(postcode);
+    }
+    if(stateValue === '') {
+        setErrorFor(state, 'Field cannot be blank');
+    }
+    else {
+        setSuccessFor(state);
+    }
+    if(emailValue === '') {
+        setErrorFor(email, 'Field cannot be blank');
+    }
+    else if (!isEmail(emailValue)){
+        setErrorFor(email, 'Email is not valid')
+    }
+
+        else {
+        setSuccessFor(email);
+    }
+
+
+    function setErrorFor(input, message){
+        const inputGroup = input.parentElement;
+        const small = inputGroup.querySelector('small');
+
+        small.innerText = message;
+        inputGroup.className = 'input-group error';
+
+    }
+
+    function setSuccessFor(input) {
+        const inputGroup = input.parentElement;
+        inputGroup.className = 'form-control success';
+    }
+
+    function isEmail(email) {
+        return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(email);
+    }
+}
+
+
+
+
+
