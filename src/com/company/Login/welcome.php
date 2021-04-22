@@ -58,7 +58,13 @@ if($link === false){
             </ul>
             </div>
         </nav>
-        <a href="logout.php" button type="button" class="btn btn-danger">logout</a>
+        <a href="logout.php" button type="button" button onclick="alertFunction()" class="btn btn-danger">logout</a>
+    
+        <script>
+            function alertFunction(){
+                alert("You are now logged out.");
+            }
+        </script>
     </p>
     </body>
 </html>
