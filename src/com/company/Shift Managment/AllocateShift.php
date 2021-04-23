@@ -1,10 +1,29 @@
-<?php require_once "db_config.php";
+<?php
 
+//initialize the session
+session_start();
+require_once "db_config.php";
+//check if logged in, if not, redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-
+    //potentially need to change the login.html file to login.php!
     header("location: login.php");
     exit;
 }
+?>
+
+<?php
+
+/*
+
+Define Database credentials.
+
+In MySQL server with default setting:
+
+user is 'root' with no password
+
+*/
+
+
 
 $server_name = 'sql6.freesqldatabase.com:3306';
 
@@ -14,7 +33,15 @@ $db_password = 'qJCg3ik2gp';
 
 $db_name = 'sql6405522';
 
+
+
+/* Connect to MySQL database */
+
 $link = mysqli_connect($server_name, $user_name, $db_password, $db_name);
+
+
+
+// Check database connection
 
 if($link === false){
 
@@ -32,8 +59,43 @@ if($link === false){
         <link rel="stylesheet" href="AllocateShift.css">
     </head>
 
+<body>
+<legend>Allocate Shift</legend>
+<form name="allocateShift" method="post" action="shifts.php">
+<p>
+<label for="First Name">Name </label>
+<input type="text" name="firstname" id="firstname">
+</p>
+<p>
+<label for="Last Name">Last Name</label>
+<input type="text" name="lastname" id="lastname">
+</p>
+<p>
+<label for="Date">Date<small class="text-muted"> write in the format: dd/mm/yyyy
+</small>
+</label>
+<input type="text" name="date" id="date">
+</p>
+<p>
+<label for="Time">Time<small class="text-muted"> write in the format: 00:00 to 23:59
+</small
+</label>
+<textarea name="time" id="time"></textarea>
+</p>
+<p>&nbsp;</p>
+<p>
+<input type="submit" name="Submit" id="Submit" value="Submit">
+</p>
+</form>
+</body>
+</html>
 
-    <div class="row">
+/* parts of this code were adopted from a tutorial from raghwendra.com */
+
+/* Old version of the form
+
+
+  <div class="row">
 <div class="col-md-6">
 <form method="post">
 <div class="form-group">
@@ -78,7 +140,7 @@ Allocate Shift
 </button>
 </form>
 </div>
-</div>
+</div> */
 
 
 
