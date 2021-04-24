@@ -6,7 +6,6 @@ session_start();
 require_once "db_config.php";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = 3;
     $firstname = $_POST["fname"];
     $lastname = $_POST["lname"];
     $hours = $_POST["hours"];
@@ -20,10 +19,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = '1234';
 
 // search submission ID
-    $query = "SELECT * FROM `users` WHERE `ID` = '$id'";
+//    $query = "SELECT * FROM `users` WHERE `ID` = '$id'";
 
-    $sql = "INSERT INTO users (username, password, fname, lname, hours, prefname, phonenumber, address, city, postcode, state, email, ID) 
-VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $pnumber, '$address', '$city', $postcode, '$state', '$email', $id)";
+    $sql = "INSERT INTO users (username, password, fname, lname, hours, prefname, phonenumber, address, city, postcode, state, email) 
+VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $pnumber, '$address', '$city', $postcode, '$state', '$email')";
     
 
   if (mysqli_query($link, $sql)) {
@@ -41,7 +40,6 @@ VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $
    <link rel ="stylesheet" href ="createuser.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="createuseraccount.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
@@ -79,147 +77,80 @@ VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $
             </form>
         </div>
     </nav>
+
 </head>
 <br></br>
 <body class = "p-3 mb-2 bg-info text-white">
-<div class="container new">
-<form class="well form-horizontal" action = "CreateUserAccount.php" method = "POST">
-    <fieldset>
-        <div class = "form-row">
 
-        <legend><center><h2><b>Create New Employee</b></h2></center></legend><br>
+<div class="container new">
+<form class="well form-horizontal" onsubmit="return validateForm(this)" action = "CreateUserAccount.php" method = "POST" id = "form">
+    <fieldset>
+
+        <div class = "form-row">
+<div id = "error"></div>
+        <legend><center><h2><b class="text-dark">Create New Employee</b></h2></center></legend><br>
 
           <div class = "container-sm rounded p-3 mb-2 bg-light text-dark">
-            <div class="form-group">
-        <label for="fname" class="col-md-4 control-label">First Name</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="firstname">First Name*</label>
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="fname" placeholder="First Name">
+        <input type="text" class="form-control" id="fname" placeholder="First Name" required>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-</div>
-
-    </div>
-    <div class="form-group">
-        <label for="lname" class="col-md-4 control-label">Last Name</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="lastname">Last Name*</label>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="lname" placeholder="Last Name">
-    </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="hours" class="col-md-4 control-label">Working Hours Limit</label>
-            <div class="col-md-4 inputGroupContainer">
-                <div class="input-group">
+        <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+              </div>
+              <div class="form-group">
+        <label for="hours">Working Hours Limit*</label>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="hours" placeholder="Hours Limit">
-    </div>
-                <i class="fas fa-check-circle"></i>
-                <i class="fas fa-exclamation-circle"></i>
-                <small>Error Message</small>
-            </div>
+        <input type="text" class="form-control" name="hours" placeholder="Hours Limit" required>
         </div>
-    <div class="form-group">
-        <label for="pname" class="col-sm-2 col-form-label">Preferred Name</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="pname">Preferred Name</label>
+
         <input type="text" class="form-control" name="pname" placeholder="Preferred Name">
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="pnumber" class="col-md-4 control-label">Phone Number</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="pnumber">Phone Number*</label>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="pnumber" placeholder="Phone Number">
+        <input type="text" class="form-control" name="pnumber" placeholder="Phone Number" required>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="address" class="col-md-4 control-label">Address</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="address">Address*</label>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="address" placeholder="13 Nickle St">
+        <input type="text" class="form-control" name="address" placeholder="13 Nickle St" required>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="city" class="col-md-4 control-label">City</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="city" >City*</label>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="city" placeholder="Willytown">
+        <input type="text" class="form-control" name="city" placeholder="Willytown" required>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="postcode" class="col-md-4 control-label">PostCode</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="postcode">PostCode*</label>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="postcode" placeholder="6969">
+        <input type="text" class="form-control" name="postcode" placeholder="6969" required>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="state" class="col-md-4 control-label">State</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="state">State*</label>
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input type="text" class="form-control" name="state" placeholder="Unstable">
+        <input type="text" class="form-control" name="state" placeholder="Unstable" required>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="email" class="col-md-4 control-label">Email</label>
-        <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
+              <div class="form-group">
+        <label for="email">Email*</label>
         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-        <input type="email" class="form-control" name="email" placeholder="resizephallic420@gmail.com">
+        <input class="form-control" name="email" pattern = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" placeholder="resizephallic420@gmail.com" required>
+    <div class = "form-group">
+        <label for="required">(* = Required Field)</label>
     </div>
-            <i class="fas fa-check-circle"></i>
-            <i class="fas fa-exclamation-circle"></i>
-            <small>Error Message</small>
-        </div>
-    </div>
+              </div>
           </div>
-    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> New Employee Created!.</div>
+<!--    <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> New Employee Created!.</div>-->
 
     <button type="submit" class="btn btn-primary">Create New Employee</button>
     </fieldset>
 </form>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>
 </html>
-
