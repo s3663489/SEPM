@@ -92,55 +92,8 @@ if($link === false){
 
 /* parts of this code were adopted from a tutorial from raghwendra.com */
 
-/* Old version of the form
 
 
-  <div class="row">
-<div class="col-md-6">
-<form method="post">
-<div class="form-group">
-<label for="date">Date<small class="text-muted"> write in the format: dd/mm/yyyy, for example today is <?= date(DATE_FORMAT); ?>
-</small>
-</label>
-<input type="text" class="form-control" id="date" name="date"
-<?php displayValue($_POST, 'date'); ?> />
-<?php displayError($errors, 'date'); ?>
-</div>
-
-<div class="form-group">
-<label for="hours">Duration: (hours)<small class="text-muted"> minimum <?= HOURS_MINIMUM; ?> hours, maximum <?= HOURS_MAXIMUM; ?> hours</small>
-</label>
-<input type="text" class="form-control" id="hours" name="hours"
-<?php displayValue($_POST, 'hours'); ?> />
-<?php displayError($errors, 'hours'); ?>
-</div>
-
-
-<div class="form-group">
-<label for="name">First Name
-</label>
-<input type="text" class="form-control" id="name" name="name"
-<?php displayValue($_POST, 'name'); ?> />
-<?php displayError($errors, 'name'); ?>
-</div>
-
-<div class="form-group">
-<label for="lastname">Last Name
-</label>
-<input type="lastname" class="form-control" id="lastname" name="lastname"
-<?php displayValue($_POST, 'lastname'); ?> />
-<?php displayError($errors, 'lastname'); ?>
-</div>
-
-<button type="submit" class="btn btn-primary mr-5" name="allocateShift" value="allocateShift">
-Allocate Shift
-</button>
-<button>
-<a href="category.php?category=<?= $category['key']; ?>" class="link">Cancel</a>
-</button>
-</form>
-</div>
-</div> */
 
 
 
