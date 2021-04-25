@@ -1,5 +1,4 @@
-<?php $title = 'Job Application|EgGaming';
-$js = array('enhancement2.js');
+<?php require_once "db_config.php";
  ?>
 
 
