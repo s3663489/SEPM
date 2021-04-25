@@ -64,23 +64,23 @@ if($link === false){
 <form name="allocateShift" method="post" action="shifts.php">
 <p>
 <label for="First Name">Name </label>
-<input type="text" name="firstname" id="firstname">
+<input type="text" name="firstname" id="firstname" required>
 </p>
 <p>
 <label for="Last Name">Last Name</label>
-<input type="text" name="lastname" id="lastname">
+<input type="text" name="lastname" id="lastname" required>
 </p>
 <p>
 <label for="Date">Date<small class="text-muted"> write in the format: dd/mm/yyyy
 </small>
 </label>
-<input type="text" name="date" id="date">
+<input type="text" name="date" id="date" required>
 </p>
 <p>
 <label for="Time">Time<small class="text-muted"> write in the format: 00:00 to 23:59
 </small
 </label>
-<textarea name="time" id="time"></textarea>
+<input type="text" name="time" id="time" required>
 </p>
 <p>&nbsp;</p>
 <p>
