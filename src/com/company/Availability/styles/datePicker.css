@@ -95,7 +95,7 @@ div.dp-popup div.dp-nav-prev {
 div.dp-popup div.dp-nav-prev a {
 	float: left;
 }
-/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
+
 div.dp-popup div.dp-nav-prev a, div.dp-popup div.dp-nav-next a {
 	cursor: pointer;
 }
