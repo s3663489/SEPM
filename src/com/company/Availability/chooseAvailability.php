@@ -180,7 +180,7 @@ $(function()
 </fieldset>
 
 <fieldset><legend><strong>Availability</strong> *</legend>
-//date picker is learnt by reading Kelvin Luck http://2008.kelvinluck.com/assets/jquery/datePicker/v2/demo/datePickerMultiple.html
+  <!-- date picker is learnt by reading Kelvin Luck http://2008.kelvinluck.com/assets/jquery/datePicker/v2/demo/datePickerMultiple.html -->
 <button class="date-pick" type="button">Click to choose Availability</button> 
 		</fieldset>
 <p><input name="submit" type="submit" value="APPLY" /></p>
