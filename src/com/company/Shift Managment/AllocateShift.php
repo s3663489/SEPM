@@ -71,16 +71,16 @@ if($link === false){
 <input type="text" name="lastname" id="lastname" required>
 </p>
 <p>
-<label for="Date">Date<small class="text-muted"> write in the format: dd/mm/yyyy
+<label for="Date">Date<small class="text-muted">
 </small>
 </label>
-<input type="text" name="date" id="date" required>
+<input type="date" name="date" id="date" required>
 </p>
 <p>
-<label for="Time">Time<small class="text-muted"> write in the format: 00:00 to 23:59
+<label for="Time">Time<small class="text-muted">
 </small
 </label>
-<input type="text" name="time" id="time" required>
+<input type="time" name="time" id="time" required>
 </p>
 <p>&nbsp;</p>
 <p>
