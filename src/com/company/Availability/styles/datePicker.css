@@ -54,11 +54,6 @@ table.jCalendar td.unselectable.dp-hover {
 	color: #888;
 }
 
-/* For the popup */
-
-/* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
-
-
 div.dp-popup {
 	background: #ccc;
 	font-size: 10px;
