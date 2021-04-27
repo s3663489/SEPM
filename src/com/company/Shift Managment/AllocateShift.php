@@ -77,10 +77,16 @@ if($link === false){
 <input type="date" name="date" id="date" required>
 </p>
 <p>
-<label for="Time">Time<small class="text-muted">
+<label for="Start Time">Time<small class="text-muted">
 </small
 </label>
-<input type="time" name="time" id="time" required>
+<input type="time" name="start" id="start" required>
+</p>
+<p>
+<label for="End Time">Time<small class="text-muted">
+</small
+</label>
+<input type="time" name="end" id="end" required>
 </p>
 <p>&nbsp;</p>
 <p>
