@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< Updated upstream
-=======
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel ="stylesheet" href ="createuser.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -25,10 +23,10 @@
                     <a class="nav-link" href="#">Calendar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="CreateUserAccount.php">Create New Employee</a>
+                    <a class="nav-link" href="../CreateUserAccount/CreateUserAccount.php">Create New Employee</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../ViewAccounts/ViewUsers.php">View Users</a>
+                    <a class="nav-link" href="ViewUsers.php">View Users</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../Shift%20Management/AllocateShift.php">Allocate Shifts</a>
@@ -45,7 +43,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="account_details.php">Profile</a>
+                    <a class="nav-link" href="../CreateUserAccount/account_details.php">Profile</a>
                 </li>
 
             </ul>
@@ -54,58 +52,54 @@
             </form>
         </div>
     </nav>
-
->>>>>>> Stashed changes
 </head>
 <body>
-<form>
-    <div class="form-group">
-        <h1>Create New Employee</h1>
-        <label for="fname">First Name</label>
-        <input type="text" class="form-control" id="fname" placeholder="First Name">
-    </div>
-    <div class="form-group">
-        <label for="lname">Last Name</label>
-        <input type="text" class="form-control" id="lname" placeholder="Last Name">
-    </div>
-    <div class="form-group">
-        <label for="hours">Working Hours Limit</label>
-        <input type="text" class="form-control" id="hours" placeholder="Hours Limit">
-    </div>
-    <div class="form-group">
-        <label for="pname">Preferred Name</label>
-        <input type="text" class="form-control" id="pname" placeholder="Preferred Name">
-    </div>
-    <div class="form-group">
-        <label for="pnumber">Phone Number</label>
-        <input type="text" class="form-control" id="pnumber" placeholder="Phone Number">
-    </div>
-    <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" placeholder="13 Nickle St">
-    </div>
-    <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="city" placeholder="Willytown">
-    </div>
-    <div class="form-group">
-        <label for="postcode">PostCode</label>
-        <input type="text" class="form-control" id="postcode" placeholder="6969">
-    </div>
-    <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" class="form-control" id="state" placeholder="Unstable">
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="resizephallic420@gmail.com">
-    </div>
+<table class = "table">
+<?php
+require_once "../db_config.php";
 
-    <button type="submit" class="btn btn-primary">Create New Employee</button>
-</form>
+    $query = "SELECT * FROM users";
+    $results = mysqli_query($link, $query) or die(mysqli_error($link));
+
+    if(mysqli_num_rows($results) === 0){
+        print "ERROR: No users exist.";
+    } else {
+        print "<h2>Users:</h2>";
+        while($row=mysqli_fetch_array($results))
+        {
+
+            print "<tr>
+<th>Username</th>
+<th scope='col'>First Name</th>
+<th scope='col'>Last Name</th>
+<th scope='col'>Working Hours Limit</th>
+<th scope='col'>Preferred Name</th>
+<th scope='col'>Phone Number</th>
+<th scope='col'>Address</th>
+<th scope='col'>City</th>
+<th scope='col'>Postcode</th>
+<th scope='col'>State</th>
+<th scope='col'>Email</th>
+<th scope='col'>ID</th>
+</tr>
+<tr>
+<td>{$row['username']}</td>
+ <td>{$row['fname']}</td>
+ <td>{$row['lname']}</td>
+ <td>{$row['hours']}</td>
+<td>{$row['prefname']}</td>
+<td>{$row['phonenumber']}</td>
+<td>{$row['address']}</td>
+<td>{$row['city']}</td>
+<td>{$row['postcode']}</td>
+<td>{$row['state']}</td>
+<td>{$row['email']}</td> 
+<td>{$row['ID']}</td> </h3>\n
+</tr>";
+        }
+}
+?>
+</table>
 </body>
 </html>
 
-<?php
-
-php?>
