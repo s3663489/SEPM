@@ -96,7 +96,7 @@ if($link === false){
 </body>
 </html>
 
-/* parts of this code were adopted from a tutorial from raghwendra.com */
+/* parts of this code were adopted and referenced from a tutorial from raghwendra.com */
 
 
 

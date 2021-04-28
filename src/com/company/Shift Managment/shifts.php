@@ -1,4 +1,4 @@
-/* using this page we store the data completed in AllocateShift.php into the database */
+/* using this page, we store the data completed in AllocateShift.php into the database */
 
 $con = mysqli_connect("sql6.freesqldatabase.com","sql6405522","qJCg3ik2gp","sql6405522");
 
@@ -21,4 +21,4 @@ if($rs)
 
 ?>
 
-/* parts of this code were adopted from a tutorial from raghwendra.com */
+/* parts of this code were adopted and referenced from a tutorial from raghwendra.com */
