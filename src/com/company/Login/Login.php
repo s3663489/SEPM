@@ -1,3 +1,4 @@
+
 <?php
 //initialize the session
 session_start();
@@ -44,6 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 <head>
 <form action="Login.php" method="post">
+
         <link rel="stylesheet" href="Login.css">
 
         <div class="imgcontainer">
@@ -72,4 +74,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
 </body>
+
 </html>
+<?php
+php?>
