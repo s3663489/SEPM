@@ -5,10 +5,10 @@ In MySQL server with default setting:
 user is 'root' with no password
 */
 
-$server_name = 'sql6.freesqldatabase.com:3306';
-$user_name = 'sql6405522';
-$db_password = 'qJCg3ik2gp';
-$db_name = 'sql6405522';
+$server_name = 'remotemysql.com:3306';
+$user_name = 'bVDXbaGLUd';
+$db_password = 'f9i1PHT1zO';
+$db_name = 'bVDXbaGLUd';
 
 /* Connect to MySQL database */
 $link = mysqli_connect($server_name, $user_name, $db_password, $db_name);
