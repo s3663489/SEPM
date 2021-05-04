@@ -75,7 +75,7 @@
 		require_once "../db_config.php";
 		
 		//Hardcoded code to show only shifsts for test user as there is no login function.
-		$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test'";
+		$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test' OR fldLastname = 'test'";
 		
 		$results = mysqli_query($link, $query) or die(mysqli_error($link));
 		if(mysqli_num_rows($results) === 0){
