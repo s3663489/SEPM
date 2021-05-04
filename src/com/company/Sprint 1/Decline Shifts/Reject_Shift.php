@@ -2,15 +2,15 @@
 //
 ////initialize the session
 //session_start();
-//require_once "db_config.php";
+//require_once "../db_config.php"
 ////check if logged in, if not, error message is shown and then redirect to login page
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-//    //potentially need to change the login.html file to login.php!
+//if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    //potentially need to change the login.html file to login.php!
 //    echo "Error. User is not logged in.";
 //    header("location: login.php");
 //    exit;
 //}
-//?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +74,9 @@
 <?php
 		require_once "../db_config.php";
 		
-		$query = "SELECT * FROM tbl_shifts";
+		//Hardcoded code to show only shifsts for test user as there is no login function.
+		$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test'";
+		
 		$results = mysqli_query($link, $query) or die(mysqli_error($link));
 		if(mysqli_num_rows($results) === 0){
                 echo '<option selected="selected">Error. No shifts found.</option>';
