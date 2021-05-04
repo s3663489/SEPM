@@ -68,7 +68,7 @@
     </nav>
 </head>
 <body>
-<form class="well form-horizontal" action="Rejected_Shift.php" method = "POST">
+<form class="well form-horizontal" action="Rejected_Shift.php" method = "POST" onsubmit="return confirm('Are you sure you want to reject shift?');">
 <label for="shifts">Choose a shift to reject from dropdown:</label>
 <select name="selectedShift">
 <?php
