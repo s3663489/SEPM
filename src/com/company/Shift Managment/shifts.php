@@ -1,4 +1,4 @@
-/* using this page, we store the data completed in AllocateShift.php into the database  */
+/* using this page, we store the data completed in AllocateShift.php into the database */
 
 $con = mysqli_connect("remotemysql.com","bVDXbaGLUd","f9i1PHT1zO","bVDXbaGLUd");
 

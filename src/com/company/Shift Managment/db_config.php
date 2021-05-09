@@ -8,7 +8,7 @@ In MySQL server with default setting:
 
 user is 'root' with no password
 
- */
+*/
 
 
 
