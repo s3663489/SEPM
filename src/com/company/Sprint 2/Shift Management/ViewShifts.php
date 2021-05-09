@@ -1,14 +1,14 @@
 <?php
 
 //initialize the session
-session_start();
-require_once "db_config.php";
+//session_start();
+//require_once "db_config.php";
 //check if logged in, if not, redirect to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     //potentially need to change the login.html file to login.php!
-    header("location: login.php");
-    exit;
-}
+//    header("location: login.php");
+//    exit;
+//}
 ?>
 
 <?php
@@ -55,17 +55,19 @@ if($link === false){
     </head>
 
       <body>
-      $sql = "SELECT firstname, lastname, date, start, end FROM tbl_shifts";
-      $result = $conn->query($sql);
+	  <?php
+	  $con = mysqli_connect("remotemysql.com","bVDXbaGLUd","f9i1PHT1zO","bVDXbaGLUd");
+      $sql = "SELECT * FROM tbl_shifts";
+      $result = $con->query($sql);
 
       if ($result->num_rows > 0) {
 
           while($row = $result->fetch_assoc()) {
-              echo "<br> First Name: ". $row["firstname"]. " - Last Name: ". $row["lastname"]. "- Date : ". $row["date"]. "- Start : ". $row["start"]. "- End : ". $row["end"]. "<br>";
+              echo "<br> First Name: ". $row["fldFirstname"]. " - Last Name: ". $row["fldLastname"]. "- Date : ". $row["fldDate"]. "- Start : ". $row["fldStart"]. "- End : ". $row["fldEnd"]. "- Status : ". $row["fldStatus"]. "<br>";
           }
       } else {
           echo "0 results";
       }
-
+	  ?>
      </body>
         </html>
