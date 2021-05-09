@@ -11,7 +11,7 @@ $end = $_POST['end'];
 
 
 
-$sql = "INSERT INTO `tbl_shifts` (`Id`, `fldFirstname`, `fldLastname`, `fldDate`, `fldStart`, `fldEnd`) VALUES ('0', '$firstname', '$lastname', '$date', '$start', '$end')";
+$sql = "INSERT INTO `tbl_shifts` (`Id`, `fldFirstname`, `fldLastname`, `fldDate`, `fldStart`, `fldEnd`, `fldStatus`) VALUES ('0', '$firstname', '$lastname', '$date', '$start', '$end', 'Pending')";
 
 
 
