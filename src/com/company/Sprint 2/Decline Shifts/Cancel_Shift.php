@@ -1,15 +1,15 @@
 <?php
-
+// This entire php function is how cancel shift should be implemented for remooving shift from database.
 require_once "../db_config.php";
 
 if (isset($_POST['selectedShift'])){
 	
 	$id = $_POST['selectedShift'];
 	
-    $rejectedsql = mysqli_query($link, "update tbl_shifts set fldStatus = 'Rejected' where Id = '$id'")
+    $deletedsql = mysqli_query($link, "delete from tbl_shifts where Id = '$id'")
         or die ('Unable to execute query. '. mysqli_error($link));
 		
-    if($rejectedsql){
+    if($deletedsql){
         $status = "success";
         $response = "Shift is rejected";
         header("location: Reject_Shift.php");
