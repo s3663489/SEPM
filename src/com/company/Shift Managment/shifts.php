@@ -1,6 +1,6 @@
 /* using this page, we store the data completed in AllocateShift.php into the database */
 
-$con = mysqli_connect("sql6.freesqldatabase.com","sql6405522","qJCg3ik2gp","sql6405522");
+$con = mysqli_connect("remotemysql.com","bVDXbaGLUd","f9i1PHT1zO","bVDXbaGLUd");
 
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
