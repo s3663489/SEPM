@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="MySQL - sql6405522@sql6.freesqldatabase.com" uuid="6e6d173d-3aa2-4419-bb72-fdd8c6b137d5">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://sql6.freesqldatabase.com:3306/sql6405522</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="test@localhost" uuid="a67b795a-9ca2-4fda-9a2d-8c91f5580cda">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="bVDXbaGLUd@remotemysql.com" uuid="d9b18faf-6c77-425b-b35e-fa20f0b4b113">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://remotemysql.com:3306/bVDXbaGLUd</jdbc-url>
+    </data-source>
+  </component>
+</project>
