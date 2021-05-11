@@ -1,6 +1,17 @@
 <?php
 require_once "db_config.php";
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $password = $_POST["psw"];
+
+$sql = "UPDATE users SET password='$password' WHERE id=1";
+
+if (mysqli_query($link, $sql)) {
+        echo "Password updated.";
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($link);
+    }
+}
 ?>
 
 <!<!doctype html>
@@ -10,6 +21,7 @@ require_once "db_config.php";
         <title>My Profile</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="password.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -57,57 +69,78 @@ require_once "db_config.php";
                     </form>
                 </div>
             </nav>
-
     </head>
-    <body>
-            
-        <div class="jumbotron text-center">
-        <h1>My Details</h1>
-        </div>
-        <div class="container">
-            <div class ="row">
-                <div class="col-sm-3">
-                          <div class="container">
-                            
-  <div class="panel-group">
-    <div class="panel panel-info">
-      <div class="panel-heading">       
-                 <?php
-                    $sql = "SELECT fname, lname, prefname, phonenumber, address, city, postcode, state, email FROM users WHERE id =1";
-                    $result = mysqli_query($link, $sql); 
-                    if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_assoc($result)){
-                    echo "Name: " . $row["fname"]. " ". $row["lname"]. ""; 
-                    }
-                }
-                ?>
-      </div>
-        <div class="panel-body">
-            <?php
-                            $sql = "SELECT fname, lname, prefname, phonenumber, address, city, postcode, state, email FROM users WHERE id =1";
-                    $result = mysqli_query($link, $sql); 
-                            if(mysqli_num_rows($result) > 0){
-                                while($row = mysqli_fetch_assoc($result)){
-                                    echo "Preferred Name: " . $row["prefname"] . "<br>";
-                                    echo "Phone Number: " . $row["phonenumber"]. "<br>";
-                                    echo "Address: " . $row["address"] .", " . $row["city"]. ", " . $row["state"]. "<br>";
-                                    echo "Email: " .$row["email"]. "<br>";
-                                }
-                            }else{
-                                    echo "0 results";
-                                }?>
-        </div>
-    </div>
-      <button type="button" class ="btn btn-primary">Update My Details</button>
-      <a href="ChangePassword.php" class="btn btn-primary">Change My Password</button>
-                        <a href="#"></a>
-                </div>
-            </div>
-        </div>  
-        
-
     
-  </div>
-</div>
-    </body>
+<body>
+    <div class="container">
+        <form action="ChangePassword.php" method = "POST" id = "form">
+            <label for="psw">Change Password</label>
+            <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                   title="Must contain at least one number and one uppercase and lowercase letter, 
+                   and at least 8 or more characters" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="message">
+      <h3>Password must contain the following:</h3>
+      <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+      <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+      <p id="number" class="invalid">A <b>number</b></p>
+      <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
+				
+    <script>
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+
+          document.getElementById("message").style.display = "block";
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function() {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if(myInput.value.match(lowerCaseLetters)) {  
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+          }
+
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if(myInput.value.match(upperCaseLetters)) {  
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+          }
+
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if(myInput.value.match(numbers)) {  
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+          }
+
+          // Validate length
+          if(myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+          }
+        }
+    </script>
+</body>
 </html>
+
