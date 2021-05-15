@@ -3,12 +3,12 @@
 //initialize the session
 session_start();
 require_once "db_config.php";
-//check if logged in, if not, redirect to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    //potentially need to change the login.html file to login.php!
-    header("location: login.html");
-    exit;
-}
+// //check if logged in, if not, redirect to login page
+// if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//     //potentially need to change the login.html file to login.php!
+//     header("location: login.html");
+//     exit;
+// }
 ?>
 
 <?php
@@ -25,13 +25,10 @@ user is 'root' with no password
 
 
 
-$server_name = 'sql6.freesqldatabase.com:3306';
-
-$user_name = 'sql6405522';
-
-$db_password = 'qJCg3ik2gp';
-
-$db_name = 'sql6405522';
+$server_name = 'remotemysql.com:3306';
+$user_name = 'bVDXbaGLUd';
+$db_password = 'f9i1PHT1zO';
+$db_name = 'bVDXbaGLUd';
 
 
 

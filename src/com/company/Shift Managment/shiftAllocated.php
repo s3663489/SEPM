@@ -1,20 +1,35 @@
 <?php
 
+//initialize the session
+session_start();
+require_once "db_config.php";
+// //check if logged in, if not, redirect to login page
+// if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//     //potentially need to change the login.html file to login.php!
+//     header("location: login.html");
+//     exit;
+// }
+?>
+
+<?php
+
 /*
+
 Define Database credentials.
+
 In MySQL server with default setting:
+
 user is 'root' with no password
+
 */
 
 
 
 $server_name = 'remotemysql.com:3306';
-
 $user_name = 'bVDXbaGLUd';
-
 $db_password = 'f9i1PHT1zO';
-
 $db_name = 'bVDXbaGLUd';
+
 
 
 /* Connect to MySQL database */
@@ -40,7 +55,8 @@ if($link === false){
         <meta charset="UTF-8">
         <title>Allocate Shift</title>
         <link rel="stylesheet" href="AllocateShift.css">
-        <meta charset="UTF-8">
+
+         <meta charset="UTF-8">
         <title>Account details</title>
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
@@ -99,24 +115,33 @@ $sql = "SELECT fldFirstname, fldLastname, fldDate , fldStart, fldEnd FROM tbl_sh
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
-?>
-<table class = "table">
-    <tr>
-    <th scope="col">First Name</th>
-    <th scope = 'col'>Last Name</th>
-    <th scope = 'col'>Date</th>
-    <th scope ='col'>Start Time</th>
-    <th scope ='col'>End Time</th>
+    ?>
+    <table class = "table">
+       <tr>
+        <th scope="col">First Name</th>
+        <th scope = 'col'>Last Name</th>
+        <th scope = 'col'>Date</th>
+        <th scope ='col'>Start Time</th>
+        <th scope ='col'>End Time</th>
     </tr>
 <?php
 while($row = mysqli_fetch_array($result)) { ?>
-<tr><td><?php echo $row['fldFirstname'] ?></td><td><?php echo $row["fldLastname"] ?></td> <td><?php echo $row["fldDate"]?> </td> <td><?php echo $row["fldStart"]?></td> <td><?php echo $row["fldEnd"]?> </td> <td><a href = 'deallocateShift.php?fldDate=<?php echo $row["fldDate"]; ?>' class = "btn btn-danger">Cancel</a></td></tr><br>
+<td><?php echo $row["fldLastname"] ?></td>
+<td><?php echo $row["fldDate"]?> </td>
+<td><?php echo $row["fldStart"]?></td>
+<td><?php echo $row["fldEnd"]?> </td>
+
+</tr><br>
 <?php
     }
 } else {
 echo "0 results";
+
 }
 ?>
 </table>
+
+<br>
+ echo "If you want to"<a href ="Shift%20Management/ViewShift.php">Reject Shift </a>
 </body>
 </html>

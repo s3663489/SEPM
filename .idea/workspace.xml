@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f7b2f5cb-82c1-43c4-ad54-b2cb7e6428bf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SEPM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SEPM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Availability/dp_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Availability/dp_config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Login/db_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Login/db_config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Management/RejectShift.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Management/RejectShift.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Management/ViewShifts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Management/ViewShifts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Managment/AllocateShift.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Managment/AllocateShift.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Managment/db_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Managment/db_config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Managment/shifts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Managment/shifts.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1sNmH3sk3dHiTtZaj0nqEDOuft6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f7b2f5cb-82c1-43c4-ad54-b2cb7e6428bf" name="Default Changelist" comment="" />
+      <created>1620721332577</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620721332577</updated>
+    </task>
+    <servers />
+  </component>
+</project>

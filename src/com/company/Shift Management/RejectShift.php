@@ -34,7 +34,7 @@
                     <a class="nav-link" href="../welcome.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Calendar</a>
+                    <a class="nav-link" href="Shift%20Management/shiftAllocated.php">Calendar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../CreateUserAccount/CreateUserAccount.php">Create New Employee</a>
