@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7b2f5cb-82c1-43c4-ad54-b2cb7e6428bf" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SEPM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SEPM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Availability/dp_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Availability/dp_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Login/db_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Login/db_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Management/RejectShift.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Management/RejectShift.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Management/ViewShifts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Management/ViewShifts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Managment/AllocateShift.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Managment/AllocateShift.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Managment/db_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Managment/db_config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Shift Managment/shifts.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Shift Managment/shifts.php" afterDir="false" />
-    </list>
+    <list default="true" id="f7b2f5cb-82c1-43c4-ad54-b2cb7e6428bf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
