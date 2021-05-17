@@ -20,13 +20,13 @@ user is 'root' with no password
 
 
 
-$server_name = 'remotemysql.com:3306';
+$server_name = 'sql6.freesqldatabase.com:3306';
 
-$user_name = 'bVDXbaGLUd';
+$user_name = 'sql6405522';
 
-$db_password = 'f9i1PHT1zO';
+$db_password = 'qJCg3ik2gp';
 
-$db_name = 'bVDXbaGLUd';
+$db_name = 'sql6405522';
 
 
 
