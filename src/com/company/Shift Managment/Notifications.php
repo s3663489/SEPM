@@ -59,6 +59,10 @@ if($link === false){
     </head>
 
       <body>
+
+      <h1> Hello, <b><?php echo
+              htmlspecialchars($_SESSION["username"]); ?></b>Notifications</h1>
+
       $sql = "SELECT firstname, lastname, date, start, end FROM tbl_shifts";
       $result = $conn->query($sql);
 
