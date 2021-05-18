@@ -111,7 +111,7 @@ if($link === false){
 
 <body>
 <?php
-$sql = "SELECT fldFirstname, fldLastname, fldDate , fldStart, fldEnd FROM tbl_shifts";
+$sql = "SELECT first_name, last_name, email, avail_dates FROM Availability";
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
@@ -120,16 +120,16 @@ if ($result->num_rows > 0) {
        <tr>
         <th scope="col">First Name</th>
         <th scope = 'col'>Last Name</th>
-        <th scope = 'col'>Date</th>
-        <th scope ='col'>Start Time</th>
-        <th scope ='col'>End Time</th>
+        <th scope = 'col'>Email</th>
+        <th scope ='col'>Availabl dates</th>
+
     </tr>
 <?php
 while($row = mysqli_fetch_array($result)) { ?>
-<td><?php echo $row["fldLastname"] ?></td>
-<td><?php echo $row["fldDate"]?> </td>
-<td><?php echo $row["fldStart"]?></td>
-<td><?php echo $row["fldEnd"]?> </td>
+<td><?php echo $row["first_name"] ?></td>
+<td><?php echo $row["last_name"]?> </td>
+<td><?php echo $row["email"]?></td>
+<td><?php echo $row["avail_dates"]?> </td>
 
 </tr><br>
 <?php
@@ -141,7 +141,6 @@ echo "0 results";
 ?>
 </table>
 
-<br>
- echo "If you want to"<a href ="Shift%20Management/ViewShift.php">Reject Shift </a>
+// echo "Reject shift" <a href =""
 </body>
 </html>
