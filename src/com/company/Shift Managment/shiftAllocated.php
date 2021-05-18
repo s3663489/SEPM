@@ -111,7 +111,7 @@ if($link === false){
 
 <body>
 <?php
-$sql = "SELECT first_name, last_name, email, avail_dates FROM Availability";
+$sql = "SELECT first_name, last_name, email, avail_dates FROM Availability WHERE first_name ='test'";
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
@@ -141,6 +141,6 @@ echo "0 results";
 ?>
 </table>
 
-// echo "Reject shift" <a href =""
+
 </body>
 </html>
