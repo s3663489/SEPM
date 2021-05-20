@@ -83,43 +83,88 @@ $username = mysqli_query($link, $query);
                     echo
                     $row['username'];
                 }?></b> Welcome to your profile</h1>
-        <table class = "table">
+
             <?php
             require_once "db_config.php";
 //Hardcoded this as we don't need the log in function to check what user is logged in
-            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test'";
+            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test' and fldStatus = 'Accepted'";
             $results = mysqli_query($link, $query) or die(mysqli_error($link));
             if(mysqli_num_rows($results) === 0){
                 print "ERROR: No shifts exist.";
 
             } else {
-                print "<h2>Shifts:</h2>";
+                print "<h2>Accepted Shifts:</h2>         <table class = \"table\">
+            <tr>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Start Time</th>
+                <th scope='col'>End Time</th>
+            </tr>";
                 while($row=mysqli_fetch_array($results))
                 {
 ?>
-            <tr>
-<th scope='col'>First Name</th>
-<th scope='col'>Last Name</th>
-<th scope='col'>Date</th>
-<th scope='col'>Start Time</th>
-<th scope='col'>End Time</th>
-</tr>
+
 <tr>
+<<<<<<< Updated upstream
 <td><?php echo $row['fldFirstname'] ?></td>
+=======
+<td><a href = 'CancelShift/cancelshift.php?name=<?php echo $row['fldFirstname']?>'</a><?php echo $row['fldFirstname']?></td>
+>>>>>>> Stashed changes
  <td><?php echo $row['fldLastname'] ?></td>
     <td><?php echo $row['fldDate']?></td>
  <td><?php echo $row['fldStart'] ?></td>
 <td><?php echo $row['fldEnd'] ?></td>
     <td><a href = 'CancelShift/cancelshift.php?date=<?php echo $row['fldDate']; ?>' class = 'btn btn-danger'>Cancel</a></td>
-
+</tr>
 <?php
-print "
- </h3>\n
-</tr>";
                 }
             }
             ?>
         </table>
+            <h2>Allocated Shifts:</h2>
 
+                <?php
+                require_once "db_config.php";
+
+                //Hardcoded code to show only shifsts for test user as there is no login function. Only pending shifts are shown in dropdown.
+                $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test' AND fldLastname = 'test' AND fldStatus = 'Pending'";
+
+                $results = mysqli_query($link, $query) or die(mysqli_error($link));
+                if(mysqli_num_rows($results) === 0){
+                    echo '<h2>You Have No Allocated Shifts!</h2>>';
+                } else {
+                    while($row=mysqli_fetch_array($results))
+                    { ?>
+        <table class="table">
+            <tr>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Start Time</th>
+                <th scope='col'>End Time</th>
+
+            </tr>
+            <form action="Shift%20Management/shiftStatus.php" method="POST">
+                <tr>
+                        <td><?php echo $row['fldFirstname']?></td>
+                    <input type = 'hidden' value='<?php echo $row['Id'] ?>' name = 'id'>
+                    <input type = 'hidden' value='<?php echo $row['fldDate'] ?>' name = 'date'>
+                    <td><?php echo $row['fldLastname'] ?></td>
+                <td><?php echo $row['fldDate']?></td>
+                <td><?php echo $row['fldStart'] ?></td>
+                <td><?php echo $row['fldEnd'] ?></td>
+                    <td><button onsubmit="Are you sure you want to accept shift?" name = 'accept' class = 'btn btn-success'>Accept</button>
+                  <button onsubmit="Areyou sure you want to reject shift?" name = 'reject' class = 'btn btn-danger'>Reject</button>
+                    </td>
+                </tr>
+            </form>
+                <?php
+                        }
+                }
+                ?>
+
+            </table>
+            <br><br>
     </body>
 </html>
