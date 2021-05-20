@@ -1,3 +1,15 @@
+<?php
+session_start();
+require_once "../db_config.php";
+
+//check if logged in via checking if array exists and, if yes, redirect to home page user is already logged in.
+if(array_key_exists('loggedin', $_SESSION) && !empty($_SESSION['loggedin'])) {
+    //potentially need to change the login.html file to login.php!
+    header("location: ../welcome.php");
+    exit;
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
