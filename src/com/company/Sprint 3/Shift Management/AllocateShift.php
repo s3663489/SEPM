@@ -1,15 +1,15 @@
 <?php
-//
 ////initialize the session
-//session_start();
-//require_once "db_config.php";
+session_start();
+require_once "db_config.php";
+
 ////check if logged in, if not, redirect to login page
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 //    //potentially need to change the login.html file to login.php!
-//    header("location: login.html");
-//    exit;
-//}
-//?>
+    header("location: Login/login.php");
+    exit;
+}
+?>
 
 <?php
 
@@ -75,7 +75,7 @@ require_once "../db_config.php"
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <button href = "logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+                    <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
                 </form>
             </div>
         </nav>

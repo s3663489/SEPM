@@ -1,20 +1,23 @@
 <?php
-//
+
 ////initialize the session
-//session_start();
+session_start();
 require_once "db_config.php";
+
 ////check if logged in, if not, redirect to login page
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 //    //potentially need to change the login.html file to login.php!
-//    header("location: login.php");
-//    exit;
-//}
+    header("location: Login/login.php");
+    exit;
+}
 
-$query = "SELECT username FROM users WHERE ID = 1";
-$username = mysqli_query($link, $query);
+$username = $_SESSION["username"];
+$password = $_SESSION["password"];
+$query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+$uname = mysqli_query($link, $query);
 
 
-//?>
+?>
 
 
 <!<!doctype html>
@@ -70,7 +73,7 @@ $username = mysqli_query($link, $query);
 
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <button href = "logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+                        <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
                     </form>
                 </div>
             </nav>
@@ -79,15 +82,17 @@ $username = mysqli_query($link, $query);
 
     <body>
         <h1> Hi, <b><?php
-                while($row = mysqli_fetch_array($username)) {
+                while($row = mysqli_fetch_array($uname)) {
                     echo
                     $row['username'];
-                }?></b> Welcome to your profile</h1>
+                ?></b> Welcome to your profile</h1>
         <table class = "table">
             <?php
             require_once "db_config.php";
-//Hardcoded this as we don't need the log in function to check what user is logged in
-            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test'";
+			$fname = $row["fname"];
+			$lname = $row["lname"];
+				}
+            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' OR fldLastname = '$lname' && fldStatus = 'Accepted'";
             $results = mysqli_query($link, $query) or die(mysqli_error($link));
             if(mysqli_num_rows($results) === 0){
                 print "ERROR: No shifts exist.";
@@ -103,6 +108,7 @@ $username = mysqli_query($link, $query);
 <th scope='col'>Date</th>
 <th scope='col'>Start Time</th>
 <th scope='col'>End Time</th>
+<th scope='col'>Status</th>
 </tr>
 <tr>
 <td><a href = 'CancelShift/cancelshift.php?name=<?php echo $row['fldFirstname']?>'</a><?php echo $row['fldFirstname']?>'</td>
@@ -110,6 +116,7 @@ $username = mysqli_query($link, $query);
     <td><?php echo $row['fldDate']?></td>
  <td><?php echo $row['fldStart'] ?></td>
 <td><?php echo $row['fldEnd'] ?></td>
+<td><?php echo $row['fldStatus'] ?></td>
     <td><a href = 'CancelShift/cancelshift.php?date=<?php echo $row['fldDate']; ?>' class = 'btn btn-danger'>Cancel</a></td>
 
 <?php

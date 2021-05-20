@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <form action="action_page.php" method="post">
+    <form action="process_login.php" method="post">
         <link rel="stylesheet" href="Login.css">
 
         <div class="imgcontainer">
@@ -9,11 +9,11 @@
         </div>
 
         <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="usw"><b>Username</b></label>
+            <input type="username" placeholder="Enter Username" name="username" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" placeholder="Enter Password" name="password" required>
 
             <button type="submit">Login</button>
             <label>
@@ -31,5 +31,3 @@
 
 </body>
 </html>
-<?php
-php?>

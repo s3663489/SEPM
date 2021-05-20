@@ -48,7 +48,7 @@
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button href = "logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+                <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
             </form>
         </div>
     </nav>

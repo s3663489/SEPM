@@ -1,15 +1,14 @@
 <?php
-//
 ////initialize the session
-//session_start();
-//require_once "../db_config.php"
-////check if logged in, if not, error message is shown and then redirect to login page
-//if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    //potentially need to change the login.html file to login.php!
-//    echo "Error. User is not logged in.";
-//    header("location: login.php");
-//    exit;
-//}
+session_start();
+require_once "db_config.php";
+
+////check if logged in, if not, redirect to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//    //potentially need to change the login.html file to login.php!
+    header("location: Login/login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +74,7 @@
 		require_once "../db_config.php";
 		
 		//Hardcoded code to show only shifsts for test user as there is no login function. Only pending shifts are shown in dropdown.
-		$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test' OR fldLastname = 'test' AND fldStatus = 'Pending'";
+		$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test' OR fldLastname = 'test' && fldStatus = 'Pending'";
 		
 		$results = mysqli_query($link, $query) or die(mysqli_error($link));
 		if(mysqli_num_rows($results) === 0){
@@ -94,7 +93,7 @@
         ?>
   </select>
   <br><br>
-  <input type="submit" name="submit" class="btn btn-primary" value="accept Shift"/>
+  <input type="submit" name="submit" class="btn btn-primary" value="Accept Shift"/>
 </form>
 </body>
 </html>

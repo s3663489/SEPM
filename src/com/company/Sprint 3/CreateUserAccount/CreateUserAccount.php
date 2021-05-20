@@ -82,7 +82,7 @@ VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+                <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
             </form>
         </div>
     </nav>
