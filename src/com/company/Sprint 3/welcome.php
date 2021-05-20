@@ -1,8 +1,7 @@
 <?php
-
 ////initialize the session
 session_start();
-require_once "db_config.php";
+require_once "../db_config.php";
 
 ////check if logged in, if not, redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
