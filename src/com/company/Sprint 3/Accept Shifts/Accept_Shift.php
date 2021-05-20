@@ -66,7 +66,7 @@ $uname = mysqli_query($link, $query);
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button href = "logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+                <input class="btn btn-outline-success my-2 my-sm-0" type="button" value="Logout" onclick="window.location.href='../Login/logout.php';"/>
             </form>
         </div>
     </nav>
@@ -81,7 +81,7 @@ $uname = mysqli_query($link, $query);
 		while($row = mysqli_fetch_array($uname)) {
 			$fname = $row["fname"];
 			$lname = $row["lname"];
-			$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' OR fldLastname = '$lname' && fldStatus = 'Pending'";
+			$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' AND fldLastname = '$lname' && fldStatus = 'Pending'";
 		}
 		$results = mysqli_query($link, $query) or die(mysqli_error($link));
 		if(mysqli_num_rows($results) === 0){

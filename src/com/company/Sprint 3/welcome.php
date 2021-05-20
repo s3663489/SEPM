@@ -72,7 +72,7 @@ $uname = mysqli_query($link, $query);
 
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
-                        <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+						<input class="btn btn-outline-success my-2 my-sm-0" type="button" value="Logout" onclick="window.location.href='Login/logout.php';"/>
                     </form>
                 </div>
             </nav>
@@ -81,51 +81,100 @@ $uname = mysqli_query($link, $query);
 
     <body>
         <h1> Hi, <b><?php
-                while($row = mysqli_fetch_array($uname)) {
+                while($row = mysqli_fetch_array($uname)) {	
                     echo
                     $row['username'];
                 ?></b> Welcome to your profile</h1>
-        <table class = "table">
+
             <?php
             require_once "db_config.php";
-			$fname = $row["fname"];
+			
+            $fname = $row["fname"];
 			$lname = $row["lname"];
-				}
-            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' OR fldLastname = '$lname' && fldStatus = 'Accepted' OR fldStatus = 'Rejected'";
-            $results = mysqli_query($link, $query) or die(mysqli_error($link));
-            if(mysqli_num_rows($results) === 0){
+            $aquery = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' AND fldLastname = '$lname' AND fldStatus = 'Accepted'";
+			}
+            $aresults = mysqli_query($link, $aquery) or die(mysqli_error($link));
+            if(mysqli_num_rows($aresults) === 0){
                 print "ERROR: No shifts exist.";
 
             } else {
-                print "<h2>Shifts:</h2>";
-                while($row=mysqli_fetch_array($results))
+                print "<h2>Accepted Shifts:</h2>         <table class = \"table\">
+            <tr>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Start Time</th>
+                <th scope='col'>End Time</th>
+            </tr>";
+                while($row=mysqli_fetch_array($aresults))
                 {
 ?>
-            <tr>
-<th scope='col'>First Name</th>
-<th scope='col'>Last Name</th>
-<th scope='col'>Date</th>
-<th scope='col'>Start Time</th>
-<th scope='col'>End Time</th>
-<th scope='col'>Status</th>
-</tr>
+
 <tr>
-<td><a href = 'CancelShift/cancelshift.php?name=<?php echo $row['fldFirstname']?>'</a><?php echo $row['fldFirstname']?>'</td>
+<<<<<<< Updated upstream
+<td><?php echo $row['fldFirstname'] ?></td>
+=======
+>>>>>>> Stashed changes
  <td><?php echo $row['fldLastname'] ?></td>
     <td><?php echo $row['fldDate']?></td>
  <td><?php echo $row['fldStart'] ?></td>
 <td><?php echo $row['fldEnd'] ?></td>
-<td><?php echo $row['fldStatus'] ?></td>
     <td><a href = 'CancelShift/cancelshift.php?date=<?php echo $row['fldDate']; ?>' class = 'btn btn-danger'>Cancel</a></td>
-
+</tr>
 <?php
-print "
- </h3>\n
-</tr>";
                 }
             }
             ?>
         </table>
+            <h2>Allocated Shifts:</h2>
 
+                <?php
+                require_once "db_config.php";
+				$username = $_SESSION["username"];
+				$password = $_SESSION["password"];
+				$query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+				$uname = mysqli_query($link, $query);
+				
+				while($row = mysqli_fetch_array($uname)) {	
+				$fname = $row["fname"];
+				$lname = $row["lname"];
+                $pquery = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' AND fldLastname = '$lname' AND fldStatus = 'Pending'";
+				}
+                $presults = mysqli_query($link, $pquery) or die(mysqli_error($link));
+                if(mysqli_num_rows($presults) === 0){
+                    echo '<h2>You Have No Allocated Shifts!</h2>>';
+                } else {
+                    while($row=mysqli_fetch_array($presults))
+                    { ?>
+        <table class="table">
+            <tr>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Start Time</th>
+                <th scope='col'>End Time</th>
+
+            </tr>
+            <form action="Shift%20Management/shiftStatus.php" method="POST">
+                <tr>
+                        <td><?php echo $row['fldFirstname']?></td>
+                    <input type = 'hidden' value='<?php echo $row['Id'] ?>' name = 'id'>
+                    <input type = 'hidden' value='<?php echo $row['fldDate'] ?>' name = 'date'>
+                    <td><?php echo $row['fldLastname'] ?></td>
+                <td><?php echo $row['fldDate']?></td>
+                <td><?php echo $row['fldStart'] ?></td>
+                <td><?php echo $row['fldEnd'] ?></td>
+                    <td><button onclick="return confirm('Are you sure you want to accept shift?');" name = 'accept' class = 'btn btn-success'>Accept</button>
+                  <button onclick="return confirm('Are you sure you want to reject shift?');" name = 'reject' class = 'btn btn-danger'>Reject</button>
+                    </td>
+                </tr>
+            </form>
+                <?php
+                        }
+                }
+                ?>
+
+            </table>
+            <br><br>
     </body>
 </html>

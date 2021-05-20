@@ -61,7 +61,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+                <input class="btn btn-outline-success my-2 my-sm-0" type="button" value="Logout" onclick="window.location.href='../Login/logout.php';"/>
             </form>
         </div>
     </nav>

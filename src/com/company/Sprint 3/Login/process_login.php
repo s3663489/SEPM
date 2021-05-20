@@ -14,28 +14,14 @@
  session_start();
  $_SESSION['loggedin'] = true;
  $_SESSION['username'] = $username;
- $_SESSION['password'] = $password;
- ?>
- <!DOCTYPE html>
- <html> 
- <head> <title>Login Page</title>
- <meta charset="UTF-8"> </head>
- <body>
- <h3>You have logged in</h3> 
- <a href="../welcome.php">Go to homepage</a>
- <?php 
+ $_SESSION['password'] = $password; 
+ header("location: ../welcome.php");
  } 
  else {
  print "<br>";
- print "<h3>Either you have not registered or your username or password is wrong!</h3>"; 
- 
- print " <a href= registration.html> Click here to register </a>";
-  print "<br>";
-  print "<br>";
- print " <a href= login_form.html> Click here to Login again </a>";
+ print "<h2>Error.</h2>";  
+ print "<h3>You are either not registered or your username and/or password is wrong!</h3>"; 
  
  
  }
  ?>
- </body> 
- </html>
