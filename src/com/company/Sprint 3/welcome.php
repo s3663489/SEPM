@@ -84,7 +84,7 @@ $uname = mysqli_query($link, $query);
                 while($row = mysqli_fetch_array($uname)) {	
                     echo
                     $row['username'];
-                ?></b> Welcome to your profile</h1>
+                print "." ?></b> Welcome to your profile</h1>
 
             <?php
             require_once "db_config.php";
@@ -107,6 +107,44 @@ $uname = mysqli_query($link, $query);
                 <th scope='col'>End Time</th>
             </tr>";
                 while($row=mysqli_fetch_array($aresults))
+                {
+?>
+
+<tr>
+<<<<<<< Updated upstream
+<td><?php echo $row['fldFirstname'] ?></td>
+=======
+>>>>>>> Stashed changes
+ <td><?php echo $row['fldLastname'] ?></td>
+    <td><?php echo $row['fldDate']?></td>
+ <td><?php echo $row['fldStart'] ?></td>
+<td><?php echo $row['fldEnd'] ?></td>
+    <td><a href = 'CancelShift/cancelshift.php?date=<?php echo $row['fldDate']; ?>' class = 'btn btn-danger'>Cancel</a></td>
+</tr>
+<?php
+                }
+            }
+            ?>
+        </table>
+		
+		<?php
+            require_once "db_config.php";
+			
+            $rejquery = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' AND fldLastname = '$lname' AND fldStatus = 'Rejected'";
+            $rejresults = mysqli_query($link, $rejquery) or die(mysqli_error($link));
+            if(mysqli_num_rows($rejresults) === 0){
+                print "ERROR: No shifts exist.";
+
+            } else {
+                print "<h2>Rejected Shifts:</h2>         <table class = \"table\">
+            <tr>
+                <th scope='col'>First Name</th>
+                <th scope='col'>Last Name</th>
+                <th scope='col'>Date</th>
+                <th scope='col'>Start Time</th>
+                <th scope='col'>End Time</th>
+            </tr>";
+                while($row=mysqli_fetch_array($rejresults))
                 {
 ?>
 
