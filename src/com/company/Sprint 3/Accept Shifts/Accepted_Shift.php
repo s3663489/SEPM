@@ -9,16 +9,12 @@ if (isset($_POST['selectedShift'])){
     $acceptedsql = mysqli_query($link, "update tbl_shifts set fldStatus = 'Accepted' where Id = '$id'")
         or die ('Unable to execute query. '. mysqli_error($link));
 		
-    if($acceptedsql){
-        $status = "success";
-        $response = "Shift is accepted";
-        header("location: Accept_Shift.php");
-    }
-    else {
-        $status = "failed";
-        $response = "There is an error with accepting shift.";
-    }
-
-    exit(json_encode(array("status" => $status, "response" => $response)));
+    if(mysqli_query($link, $sql)) {
+	echo "Shift has been accepted.";
+    header("location: AllocateShift.php");
+	}
+	else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($link);
+	}
 }
 ?>

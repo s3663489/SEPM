@@ -1,7 +1,7 @@
 <?php
 ////initialize the session
 session_start();
-require_once "../db_config.php";
+require_once "db_config.php";
 
 ////check if logged in, if not, redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
@@ -91,7 +91,7 @@ $uname = mysqli_query($link, $query);
 			$fname = $row["fname"];
 			$lname = $row["lname"];
 				}
-            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' OR fldLastname = '$lname' && fldStatus = 'Accepted'";
+            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' OR fldLastname = '$lname' && fldStatus = 'Accepted' OR fldStatus = 'Rejected'";
             $results = mysqli_query($link, $query) or die(mysqli_error($link));
             if(mysqli_num_rows($results) === 0){
                 print "ERROR: No shifts exist.";

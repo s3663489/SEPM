@@ -9,6 +9,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: Login/login.php");
     exit;
 }
+
+$username = $_SESSION["username"];
+$password = $_SESSION["password"];
+$query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+$uname = mysqli_query($link, $query);
 ?>
 
 <!DOCTYPE html>
@@ -73,9 +78,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <?php
 		require_once "../db_config.php";
 		
-		//Hardcoded code to show only shifsts for test user as there is no login function. Only pending shifts are shown in dropdown.
-		$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test' OR fldLastname = 'test' && fldStatus = 'Pending'";
-		
+		while($row = mysqli_fetch_array($uname)) {
+			$fname = $row["fname"];
+			$lname = $row["lname"];
+			$query = "SELECT * FROM tbl_shifts WHERE fldFirstname = '$fname' OR fldLastname = '$lname' && fldStatus = 'Pending'";
+		}
 		$results = mysqli_query($link, $query) or die(mysqli_error($link));
 		if(mysqli_num_rows($results) === 0){
                 echo '<option selected="selected">Error. No shifts found.</option>';
