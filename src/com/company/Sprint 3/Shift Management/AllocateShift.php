@@ -6,7 +6,7 @@ require_once "../db_config.php";
 ////check if logged in, if not, redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 //    //potentially need to change the login.html file to login.php!
-    header("location: Login/login.php");
+    header("location: ../Login/login.php");
     exit;
 }
 ?>

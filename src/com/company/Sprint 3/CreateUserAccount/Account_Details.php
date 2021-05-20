@@ -1,28 +1,19 @@
 <?php
-//// Initialize the session
-//session_start();
-//require_once "db_config.php";
-//
-//// Check if the user is logged in, if not then redirect him to login page
-//if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-//    header("location: login.php");
-//    exit;
-//}
-//?>
-
-<?php
-
-/*
-Define Database credentials.
-In MySQL server with default setting:
-user is 'root' with no password
-*/
-
-
+// Initialize the session
+session_start();
 require_once "../db_config.php";
 
-?>
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 
+$username = $_SESSION["username"];
+$password = $_SESSION["password"];
+$query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+$uname = mysqli_query($link, $query);
+?>
 
 <!<!doctype html>
 <html lang ="en">
@@ -86,8 +77,8 @@ require_once "../db_config.php";
 
 <body>
 <p> Hi, <b><?php echo
-        htmlspecialchars($_SESSION["username"]); ?></b></p>
-<p> <?php echo htmlspecialchars($_SESSION["address"]) ?></p>
-<p> <?php echo htmlspecialchars($_SESSION["phone_numbr"]) ?></p>
+        htmlspecialchars($username); print "." ?></b></p>
+<p> <?php while($row = mysqli_fetch_array($uname)) {echo htmlspecialchars($row['address']); ?></p>
+<p> <?php echo htmlspecialchars($row["phonenumber"]);} ?></p>
 </body>
 </html>

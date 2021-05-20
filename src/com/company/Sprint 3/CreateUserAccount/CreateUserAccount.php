@@ -5,6 +5,13 @@ session_start();
 //Include config file
 require_once "../db_config.php";
 
+////check if logged in, if not, redirect to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//    //potentially need to change the login.html file to login.php!
+    header("location: ../Login/login.php");
+    exit;
+}
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstname = $_POST["fname"];
     $lastname = $_POST["lname"];
@@ -78,11 +85,13 @@ VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $
                     </div>
                 </li>
                 <li class="nav-item">
+
                     <a class="nav-link" href="CreateUserAccount/account_details.php">Profile</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button href = "Login/logout.php" class="btn btn-outline-success my-2 my-sm-0" type="logoutbtn">Logout</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+
             </form>
         </div>
     </nav>
