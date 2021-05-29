@@ -22,7 +22,7 @@ require_once "db_config.php";
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href=".../welcome.php">Home</a>
+                            <a class="nav-link" href="../welcome.php">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Calendar</a>

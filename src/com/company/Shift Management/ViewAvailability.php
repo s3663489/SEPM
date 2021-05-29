@@ -95,27 +95,32 @@ if($link === false){
 
 <body>
 <?php
-$sql = "SELECT username, fldDate , fldStart, fldEnd FROM tbl_shifts";
+$sql = "SELECT first_name, last_name, username, avail_dates FROM Availability WHERE first_name = 'Solomon'";
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
 ?>
 <table class = "table">
+    <h2>Availability</h2>
     <tr>
-    <th scope = 'col'>Username</th>
-    <th scope = 'col'>Date</th>
-    <th scope ='col'>Start Time</th>
-    <th scope ='col'>End Time</th>
+        <th scope="col">First Name</th>
+        <th scope = 'col'>Last Name</th>
+        <th scope = 'col'>Email</th>
+        <th scope ='col'>Available Dates</th>
     </tr>
-<?php
-while($row = mysqli_fetch_array($result)) { ?>
-<tr><td><?php echo $row['username'] ?></td> <td><?php echo $row["fldDate"]?> </td> <td><?php echo $row["fldStart"]?></td> <td><?php echo $row["fldEnd"]?> </td> <td><a href = 'deallocateShift.php?fldDate=<?php echo $row["fldDate"]; ?>' class = "btn btn-danger">Cancel</a></td></tr><br>
-<?php
+    <?php
+    while($row = mysqli_fetch_array($result)) {
+        ?>
+        <tr><td><?php echo $row['first_name'] ?></td>
+            <td><?php echo $row["last_name"] ?></td>
+            <td><?php echo $row["username"]?> </td>
+            <td><?php echo $row["avail_dates"]?></td>
+        <?php
     }
-} else {
-echo "0 results";
-}
-?>
+    } else {
+        echo "0 results";
+    }
+    ?>
 </table>
 </body>
 </html>

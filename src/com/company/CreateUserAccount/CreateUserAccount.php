@@ -78,13 +78,11 @@ VALUES ('$email', '$password', '$firstname', '$lastname', $hours, '$prefname', $
                     </div>
                 </li>
                 <li class="nav-item">
-
                     <a class="nav-link" href="CreateUserAccount/account_details.php">Profile</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
-
             </form>
         </div>
     </nav>

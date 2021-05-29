@@ -48,7 +48,7 @@ $username = mysqli_query($link, $query);
                             <a class="nav-link" href="CreateUserAccount/CreateUserAccount.php">Create New Employee</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ViewAccounts/ViewUsers.php">View Users</a>
+                            <a class="nav-link" href="../ViewAccounts/ViewUsers.php">View Users</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Shift%20Management/AllocateShift.php">Allocate Shifts</a>
@@ -87,7 +87,7 @@ $username = mysqli_query($link, $query);
             <?php
             require_once "db_config.php";
 //Hardcoded this as we don't need the log in function to check what user is logged in
-            $query = "SELECT * FROM tbl_shifts WHERE fldFirstname = 'test'";
+            $query = "SELECT * FROM tbl_shifts WHERE username = 'test'";
             $results = mysqli_query($link, $query) or die(mysqli_error($link));
             if(mysqli_num_rows($results) === 0){
                 print "ERROR: No shifts exist.";
@@ -98,16 +98,14 @@ $username = mysqli_query($link, $query);
                 {
 ?>
             <tr>
-<th scope='col'>First Name</th>
-<th scope='col'>Last Name</th>
+<th scope='col'>Username</th>
 <th scope='col'>Date</th>
 <th scope='col'>Start Time</th>
 <th scope='col'>End Time</th>
 </tr>
 <tr>
-<td><a href = 'CancelShift/cancelshift.php?name=<?php echo $row['fldFirstname']?>'</a><?php echo $row['fldFirstname']?>'</td>
- <td><?php echo $row['fldLastname'] ?></td>
-    <td><?php echo $row['fldDate']?></td>
+    <td><?php echo $row['username']; ?></td>
+        <td><?php echo $row['fldDate']?></td>
  <td><?php echo $row['fldStart'] ?></td>
 <td><?php echo $row['fldEnd'] ?></td>
     <td><a href = 'CancelShift/cancelshift.php?date=<?php echo $row['fldDate']; ?>' class = 'btn btn-danger'>Cancel</a></td>
